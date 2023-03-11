@@ -27,6 +27,16 @@ def user_list(request):
         print(e)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+def get_chatgpt_account(request):
+    try:
+        user = User.objects.get(username="chat-gpt")
+        serilizer = UserChildSerializer(user)
+        return Response(serilizer.data)
+    except Exception as e:
+        print(e)
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
 @api_view(['GET', 'PUT', 'DELETE'])
 def user_detail(request, pk):
     try:

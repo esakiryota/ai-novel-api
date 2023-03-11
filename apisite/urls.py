@@ -45,4 +45,5 @@ urlpatterns = [
 
     # その他
     path('send-email/', views.send_email),
+    path('users/chat-gpt/', views.get_chatgpt_account)
 ]
